@@ -51,7 +51,7 @@ app.get('/login', async (req, res) => {
      if (findedUser) {
           res.json({ "message": "login success", "user": findedUser }).status(200)
      } else {
-          res.send("not find").status(404)
+          res.json({"message":"not find"}).status(404)
      }
 })
 
