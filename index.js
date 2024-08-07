@@ -30,7 +30,7 @@ app.get('/signup', async (req, res) => {
           email: email
      })
 
-     console.log(createuser)
+   //  console.log(createuser)
 
      if (createuser) {
           res.send('successfully create acout').status(200)
@@ -48,15 +48,17 @@ app.get('/login', async (req, res) => {
      // console.log(findedUser)
 
      if (findedUser) {
-          res.send("login Success").status(200)
+          res.send(`{message:"login success",user:${findedUser} }`).status(200)
      } else {
           res.send("not find").status(404)
      }
 })
 
-app.get('/all',async (req,res)=>{
-  let total = await users.find()
-   res.send(total.length)
+app.get('/all', async (req,res)=>{
+  let totalusers = await users.find()
+  let totalusersLength = totalusers.length
+    //console.log(totalusersLength)
+    res.send(`${totalusersLength}`)
 })
 
 app.listen(PORT, () => {
